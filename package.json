@@ -1,0 +1,9 @@
+{
+	"name": "fid-profile",
+	"devDependencies": {
+		"fid-umd": "*"
+	},
+	"scripts": {
+		"umd": "fid-umd lib/*.js"
+	}
+}
