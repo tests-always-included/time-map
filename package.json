@@ -1,7 +1,7 @@
 {
 	"name": "fid-profile",
 	"devDependencies": {
-		"fid-umd": "*"
+		"fid-umd": ">=1.0.6"
 	},
 	"scripts": {
 		"umd": "fid-umd lib/*.js"
