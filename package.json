@@ -1,6 +1,6 @@
 {
 	"name": "fid-profile",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "Tyler Akins <fidian@rumkin.com>",
 	"description": "Track time spent in your JavaScript routines and call counts.  When other profiling tools are not readily available, this one will work in a pinch.",
 	"homepage": "https://github.com/fidian/fid-profile",
