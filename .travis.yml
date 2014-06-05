@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+    - 0.10
+notifications:
+    irc:
+        channels:
+            - "chat.freenode.net#tests-always-included"
+        skip_join: true
+        template:
+            - "%{repository_slug}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+        use_notice: true
+addons:
+    sauce_connect:
+        username: "fidian"
+        access_key:
+            secure: "DNbgoOG6DIRvkIIL8IPJOfx9NJQPiMjrJCJclXi9L+6G4w/LCBwIYwjDvBMvzTJc2suzLoeP0nu2qkV2+AJHZ1tdCUyzVPgitjBhXt5cqObVL1y1BJaKovx+Lv0tvO7MqZ1DVMOZso1A6rJHQeBKxdz+GHbBwrqgsaOxBx/gmJo="

@@ -1,29 +1,28 @@
 /**
- * Tests confirming FidProfile operates as expected
+ * Tests confirming TimeMap operates as expected
  */
 /*global beforeEach, describe, expect, it, jasmine, runs, spyOn, waitsFor*/
 
 'use strict';
 
-var FidProfile;
-FidProfile = require('../lib/fid-profile');
+var TimeMap;
+TimeMap = require('..');
 
-describe('FidProfile', function () {
+describe('TimeMap', function () {
 	describe('constructor', function () {
 		it('does not need arguments', function () {
 			var fp;
-			fp = new FidProfile();
-			expect(fp instanceof FidProfile).toBe(true);
+
+			fp = new TimeMap();
+			expect(fp instanceof TimeMap).toBe(true);
 		});
 	});
-
 	describe('prototype', function () {
 		var fp;
 
 		beforeEach(function () {
-			fp = new FidProfile();
+			fp = new TimeMap();
 		});
-
 		describe('.functionName()', function () {
 			it('returns empty string with non-functions', function () {
 				expect(fp.functionName()).toEqual('');
@@ -35,16 +34,24 @@ describe('FidProfile', function () {
 				expect(fp.functionName([])).toEqual('');
 			});
 			it('finds the name for functions', function () {
-				expect(fp.functionName(function testing() {})).toEqual('testing');
+				expect(fp.functionName(function testing() {
+                    return undefined;
+                })).toEqual('testing');
 			});
 			it('returns an empty string if a name can not be found', function () {
-				expect(fp.functionName(function () {})).toEqual('');
+				expect(fp.functionName(function () {
+                    return undefined;
+                })).toEqual('');
 			});
 			it('uses the .name property if found', function () {
 				// Special case for newer implementations
 				var x;
-				x = function XYZ() {};
+
+				x = function XYZ() {
+                    return undefined;
+                };
 				x.name = 'testFunc';
+
 				// Some JS engines don't let you set this
 				if (x.name === 'testFunc') {
 					expect(fp.functionName(x)).toEqual('testFunc');
@@ -53,10 +60,13 @@ describe('FidProfile', function () {
 			it('parses .toString() if name property is missing', function () {
 				// Special case for older implementations
 				var x;
+
+                x = 'this makes jslint happy';
 				/*jslint evil:true*/
 				eval("x = /* comment */ function // single-line comment\n /* multi-line\n * comment */\n\t aFunction \r\n // single \n /* multi \n line */ \n \t (\n\t) {}");
 				/*jslint evil:false*/
 				x.name = '';
+
 				// Some JS engines don't let you set this property
 				if (!x.name) {
 					expect(fp.functionName(x)).toEqual('aFunction');
@@ -69,6 +79,7 @@ describe('FidProfile', function () {
 			});
 			it('somewhat times things', function () {
 				var start, end;
+
 				runs(function () {
 					start = fp.getDate();
 					end = null;
@@ -92,14 +103,19 @@ describe('FidProfile', function () {
 
 			beforeEach(function () {
 				functions = {
-					profiled: function () {},
-					anotherProfiled: function () {},
-					notProfiled: function () {}
+					profiled: function () {
+                        return undefined;
+                    },
+					anotherProfiled: function () {
+                        return undefined;
+                    },
+					notProfiled: function () {
+                        return undefined;
+                    }
 				};
 				fp.profile(functions, 'profiled');
 				fp.profile(functions, 'anotherProfiled');
 			});
-
 			describe('.findByName()', function () {
 				it('returns an array of matches', function () {
 					expect(fp.findByName('profiled')).toEqual([
@@ -110,7 +126,6 @@ describe('FidProfile', function () {
 					expect(fp.findByName('notProfiled')).toEqual([]);
 				});
 			});
-
 			describe('.isProfiled()', function () {
 				it('returns truthy if the function is profiled', function () {
 					expect(fp.isProfiled(functions.profiled)).toBe(fp.profiles[0]);
@@ -122,18 +137,18 @@ describe('FidProfile', function () {
 					expect(fp.isProfiled(functions.notProfiled)).toBe(false);
 				});
 			});
-
 			describe('with fake logged data and null reporter', function () {
 				beforeEach(function () {
-					fp.profiles[0].calls = 3;
-					fp.profiles[0].elapsed = 3;
-					fp.profiles[0].average = 1;
-
-					fp.profiles[1].calls = 2;
-					fp.profiles[1].elapsed = 20;
-					fp.profiles[1].average = 10;
-
-					fp.logReporter = function () {};
+                    // Just override a few values - not setting all of the data
+                    fp.profiles[0].calls = 3;
+                    fp.profiles[0].elapsed = 3;
+                    fp.profiles[0].average = 1;
+                    fp.profiles[1].calls = 2;
+                    fp.profiles[1].elapsed = 20;
+                    fp.profiles[1].average = 10;
+					fp.logReporter = function () {
+                        return undefined;
+                    };
 				});
 				it('reports all with no filters', function () {
 					expect(fp.log()).toEqual([
@@ -185,7 +200,7 @@ describe('FidProfile', function () {
 				it('accepts a custom reporter', function () {
 					var reporterCalled;
 
-					function reporter(a, b) {
+					function reporter() {
 						reporterCalled = true;
 					}
 
