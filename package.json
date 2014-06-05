@@ -1,35 +1,35 @@
 {
-	"name": "time-map",
-	"version": "1.0.1",
-	"author": "Tyler Akins <fidian@rumkin.com>",
-	"description": "Track time spent in your JavaScript routines and call counts.  When other profiling tools are not readily available, this one will work in a pinch.",
-	"homepage": "https://github.com/tests-always-included/time-map",
-	"contributors": [
-		"Tyler Akins <fidian@rumkin.com> (http://rumkin.com)"
-	],
-	"main": "lib/time-map.js",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/fidian/fid-umd.git"
-	},
-	"keywords": [
-		"profile",
-		"time",
-		"speed",
-		"performance"
-	],
-	"devDependencies": {
-		"fid-umd": ">=1.0.6",
-		"jasmine-node": "*"
-	},
-	"license": "MIT",
-	"engines": {
-		"node": ">=0.6",
-		"npm": "*"
-	},
-	"scripts": {
-		"auto": "jasmine-node --autotest lib test",
-		"test": "jasmine-node lib test",
-		"umd": "fid-umd lib/time-map.js"
-	}
+    "name": "time-map",
+    "version": "1.0.1",
+    "author": "Tyler Akins <fidian@rumkin.com>",
+    "description": "Track time spent in your JavaScript routines and call counts.  When other profiling tools are not readily available, this one will work in a pinch.",
+    "homepage": "https://github.com/tests-always-included/time-map",
+    "contributors": [
+        "Tyler Akins <fidian@rumkin.com> (http://rumkin.com)"
+    ],
+    "main": "lib/time-map.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fidian/fid-umd.git"
+    },
+    "keywords": [
+        "profile",
+        "time",
+        "speed",
+        "performance"
+    ],
+    "devDependencies": {
+        "fid-umd": ">=1.0.6",
+        "jasmine-node": "*"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=0.6",
+        "npm": "*"
+    },
+    "scripts": {
+        "test": "grunt test",
+        "umd": "fid-umd lib/time-map.js",
+        "watch": "grunt watch"
+    }
 }
