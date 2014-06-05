@@ -16,9 +16,9 @@
         };
 
         try {
-            x.name = '';
+            x.name = 'thing';
 
-            return x.name === '';
+            return x.name === 'thing';
         } catch (ignore) {}
 
         return false;
@@ -65,6 +65,21 @@
                         return undefined;
                     })).toEqual('');
                 });
+                it('reads a simple string representation', function () {
+                    expect(fp.functionNameFromString('function ting() {}')).toEqual('ting');
+                });
+                it('understand functions with no name in their string representation', function () {
+                    expect(fp.functionNameFromString('function() {}')).toEqual('');
+                });
+                it('reads a string representation just fine', function () {
+                    var x;
+
+                    x = 'this gets replaced with the eval';
+                    /*jslint evil:true*/
+                    eval("x = /* comment */ function // single-line comment\n /* multi-line\n * comment */\n\t aFunction \r\n // single \n /* multi \n line */ \n \t (\n\t) { // code goes here\r\n }");
+                    /*jslint evil:false*/
+                    expect(fp.functionNameFromString(x.toString())).toEqual('aFunction');
+                });
 
                 // Some JS engines do not let you set this property
                 if (canClearNameOnFunction()) {
@@ -83,10 +98,9 @@
                         // Special case for older implementations
                         var x;
 
-                        x = 'this makes jslint happy';
-                        /*jslint evil:true*/
-                        eval("x = /* comment */ function // single-line comment\n /* multi-line\n * comment */\n\t aFunction \r\n // single \n /* multi \n line */ \n \t (\n\t) {}");
-
+                        x = function aFunction() {
+                            return undefined;
+                        };
                         x.name = '';
                         expect(fp.functionName(x)).toEqual('aFunction');
                     });
