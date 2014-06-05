@@ -20,7 +20,14 @@
     ],
     "devDependencies": {
         "fid-umd": ">=1.0.6",
-        "jasmine-node": "*"
+        "grunt": "*",
+        "grunt-cli": "*",
+        "grunt-jasmine-node": "*",
+        "grunt-jslint": "*",
+        "grunt-karma": "*",
+        "karma-jasmine": "*",
+        "karma-phantomjs-launcher": "*",
+        "karma-sauce-launcher": "*"
     },
     "license": "MIT",
     "engines": {
@@ -30,6 +37,6 @@
     "scripts": {
         "test": "grunt test",
         "umd": "fid-umd lib/time-map.js",
-        "watch": "grunt watch"
+        "watch": "grunt karma:watch"
     }
 }
