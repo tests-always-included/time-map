@@ -76,9 +76,9 @@
 
                     x = 'this gets replaced with the eval';
                     /*jslint evil:true*/
-                    eval("x = /* comment */ function // single-line comment\n /* multi-line\n * comment */\n\t aFunction \r\n // single \n /* multi \n line */ \n \t (\n\t) { // code goes here\r\n }");
+                    eval("x = /* comment */ function // single-line comment\n /* multi-line\n * comment */\n\t aFunction1 \r\n // single \n /* multi \n line */ \n \t (\n\t) { // code goes here\r\n }");
                     /*jslint evil:false*/
-                    expect(fp.functionNameFromString(x.toString())).toEqual('aFunction');
+                    expect(fp.functionNameFromString(x.toString())).toEqual('aFunction1');
                 });
 
                 // Some JS engines do not let you set this property
@@ -98,11 +98,11 @@
                         // Special case for older implementations
                         var x;
 
-                        x = function aFunction() {
+                        x = function aFunction2() {
                             return undefined;
                         };
                         x.name = '';
-                        expect(fp.functionName(x)).toEqual('aFunction');
+                        expect(fp.functionName(x)).toEqual('aFunction2');
                     });
                 }
             });
