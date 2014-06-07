@@ -1,0 +1,25 @@
+{
+    "name": "time-map",
+    "version": "1.0.2",
+    "author": "Tyler Akins <fidian@rumkin.com>",
+    "description": "Track time spent in your JavaScript routines and call counts.  When other profiling tools are not readily available, this one will work in a pinch.",
+    "homepage": "https://github.com/tests-always-included/time-map",
+    "contributors": [
+        "Tyler Akins <fidian@rumkin.com> (http://rumkin.com)"
+    ],
+    "main": "lib/time-map.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tests-always-included/time-map.git"
+    },
+    "files": [
+        "lib/time-map.js"
+    ],
+    "keywords": [
+        "profile",
+        "time",
+        "speed",
+        "performance"
+    ],
+    "license": "MIT"
+}
