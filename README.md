@@ -3,10 +3,10 @@ TimeMap - JavaScript Profiling
 
 Profile the time it takes to run your functions.
 
-[![NPM][npm-image]][NPM]
-[![Build Status][travis-image]][Travis CI]
-[![Dependencies][dependencies-image]][Dependencies]
-[![Dev Dependencies][devdependencies-image]][Dev Dependencies]
+[![npm version][npm-badge]][npm-link]
+[![Build Status][travis-badge]][travis-link]
+[![Dependencies][dependencies-badge]][dependencies-link]
+[![Dev Dependencies][devdependencies-badge]][devdependencies-link]
 
 There are better tools, such as Chrome's built-in profiler and debugging through node.js.  When those advanced things are not at your disposal, you must rely on something.  For instance, there could be some code in your application that is causing drastic performance problems in Internet Explorer 8.  What can you do?  Manual profiling.
 
@@ -310,16 +310,15 @@ Tests are *always* included.  You can run them with the following command.
 License
 -------
 
-TimeMap is released under an [MIT License] with an additional non-advertising clause.  Check the repository for the full text.
+TimeMap is released under an [MIT License][LICENSE] with an additional non-advertising clause.  Check the repository for the full text.
 
-[Dev Dependencies]: https://david-dm.org/tests-always-included/time-map#info=devDependencies
-[devdependencies-image]: https://david-dm.org/tests-always-included/time-map/dev-status.png
-[Dependencies]: https://david-dm.org/tests-always-included/time-map
-[dependencies-image]: https://david-dm.org/tests-always-included/time-map.png
+[dependencies-badge]: https://img.shields.io/david/tests-always-included/time-map.svg
+[dependencies-link]: https://david-dm.org/tests-always-included/time-map
+[devdependencies-badge]: https://img.shields.io/david/dev/tests-always-included/time-map.svg
+[devdependencies-link]: https://david-dm.org/tests-always-included/time-map#info=devDependencies
 [FidUmd]: https://github.com/fidian/fid-umd
-[MIT License]: LICENSE.md
-[NPM]: https://npmjs.org/package/time-map
-[npm-image]: https://nodei.co/npm/time-map.png?downloads=true&stars=true
-[travis-image]: https://secure.travis-ci.org/tests-always-included/time-map.png?branch=master
-[Travis CI]: http://travis-ci.org/tests-always-included/time-map
-
+[LICENSE]: LICENSE.md
+[npm-badge]: https://img.shields.io/npm/v/time-map.svg
+[npm-link]: https://npmjs.org/package/time-map
+[travis-badge]: https://img.shields.io/travis/tests-always-included/time-map/master.svg
+[travis-link]: http://travis-ci.org/tests-always-included/time-map
