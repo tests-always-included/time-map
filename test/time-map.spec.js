@@ -1,7 +1,7 @@
 /**
  * Tests confirming TimeMap operates as expected
  */
-/*global beforeEach, describe, expect, it, jasmine, runs, setTimeout, spyOn, TimeMap, waitsFor*/
+/*global beforeEach, describe, expect, it, jasmine, setTimeout, spyOn, TimeMap */
 
 (function (root) {
     'use strict';
@@ -110,25 +110,19 @@
                 it('returns a number', function () {
                     expect(typeof fp.getDate()).toBe('number');
                 });
-                it('somewhat times things', function () {
+                it('somewhat times things', function (done) {
                     var start, end;
 
-                    runs(function () {
-                        start = fp.getDate();
-                        end = null;
-                        setTimeout(function () {
-                            end = fp.getDate();
-                        }, 50);
-                    });
-                    waitsFor(function () {
-                        return end !== null;
-                    });
-                    runs(function () {
+                    start = fp.getDate();
+                    end = null;
+                    setTimeout(function () {
+                        end = fp.getDate();
                         // Timing can get numbers smaller than 50, weirdly
                         // I've seen 49.96086
                         expect(end - start).not.toBeLessThan(45);
                         expect(end - start).toBeLessThan(100);
-                    });
+                        done();
+                    }, 50);
                 });
             });
             describe('with test functions', function () {

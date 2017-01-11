@@ -25,6 +25,8 @@
         "grunt-jasmine-node": "*",
         "grunt-jslint": "*",
         "grunt-karma": "*",
+        "jasmine-core": "*",
+        "karma": "*",
         "karma-jasmine": "*",
         "karma-phantomjs-launcher": "*",
         "karma-sauce-launcher": "*"
