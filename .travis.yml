@@ -1,10 +1,16 @@
 language: node_js
 node_js:
-    - "4.0"
-    - "4"
-    - "5.0"
-    - "5"
-    - "6.0"
-    - "6"
-before_install:
-    - "npm install -g npm@latest"
+    - 6
+notifications:
+    irc:
+        channels:
+            - "chat.freenode.net#tests-always-included"
+        skip_join: true
+        template:
+            - "%{repository_slug}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+        use_notice: true
+addons:
+    sauce_connect:
+        username: "fidian"
+        access_key:
+            secure: "EQgiGOUQuAlkm6Yw/JwTchBtbKImUzOG3Jwb4TB+HDRPCtzdnW9kZxTRWlh8/u35gZSWCT3b4ZDRRbLuUsQcgmmF1dCmadCvFQ63XV+g2XqDjFiTQMIJpTFXWAs7Grdf6YrX57NopcD9AYQmmzvuqPtfkKkbGhHPBLgq0RQZp48="
